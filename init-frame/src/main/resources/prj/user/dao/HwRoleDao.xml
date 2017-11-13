@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<!-- happy-generator 1.0.0 生成于 2017-08-22 11:41:24 -->
+<mapper namespace="prj.user.dao.HwRoleDao">
+    <select id="queryList" resultType="java.util.HashMap">
+        select HW_ROLE.MODEL_ID as tokenOfModel,HW_ROLE.NAME as name,HW_ROLE.NT as nt,HW_ROLE.ID as token,HW_ROLE.TYPE as type from HW_ROLE
+    </select>
+    <select id="searchOne" resultType="prj.user.model.HwRole">
+		select HW_ROLE.MODEL_ID as tokenOfModel,HW_ROLE.NAME as name,HW_ROLE.NT as nt,HW_ROLE.ID as token,HW_ROLE.TYPE as type from HW_ROLE 
+		<where>
+<if test="tokenOfModel != null">
+AND HW_ROLE.MODEL_ID = #{tokenOfModel}
+</if>
+<if test="name != null">
+AND HW_ROLE.NAME = #{name}
+</if>
+<if test="nt != null">
+AND HW_ROLE.NT = #{nt}
+</if>
+<if test="token != null">
+AND HW_ROLE.ID = #{token}
+</if>
+<if test="type != null">
+AND HW_ROLE.TYPE = #{type}
+</if>
+</where>
+ 
+	</select>
+    <select id="searchList" resultType="prj.user.model.HwRole">
+		select HW_ROLE.MODEL_ID as tokenOfModel,HW_ROLE.NAME as name,HW_ROLE.NT as nt,HW_ROLE.ID as token,HW_ROLE.TYPE as type from HW_ROLE
+		<where>
+<if test="tokenOfModel != null">
+AND HW_ROLE.MODEL_ID = #{tokenOfModel}
+</if>
+<if test="name != null">
+AND HW_ROLE.NAME = #{name}
+</if>
+<if test="nt != null">
+AND HW_ROLE.NT = #{nt}
+</if>
+<if test="token != null">
+AND HW_ROLE.ID = #{token}
+</if>
+<if test="type != null">
+AND HW_ROLE.TYPE = #{type}
+</if>
+</where>
+
+    </select>
+    <select id="queryListFully"  resultType="prj.user.model.HwRole" >
+		select HW_ROLE.NAME as name,HW_ROLE.NT as nt,HW_ROLE.ID as token,HW_ROLE.TYPE as type,HW_MODEL0.ID as tokenOfModel,HW_MODEL0.NAME as modelDesp from HW_ROLE 
+ left join HW_MODEL HW_MODEL0 on (
+HW_MODEL0.ID = HW_ROLE.MODEL_ID) 
+    </select>
+    <select id="queryListByPageFully" resultType="prj.user.model.HwRole" >
+		select HW_ROLE.NAME as name,HW_ROLE.NT as nt,HW_ROLE.ID as token,HW_ROLE.TYPE as type,HW_MODEL0.ID as tokenOfModel,HW_MODEL0.NAME as modelDesp from HW_ROLE 
+ left join HW_MODEL HW_MODEL0 on (
+HW_MODEL0.ID = HW_ROLE.MODEL_ID) 
+    </select>
+    <select id="getObj" resultType="prj.user.model.HwRole">
+		select HW_ROLE.MODEL_ID as tokenOfModel,HW_ROLE.NAME as name,HW_ROLE.NT as nt,HW_ROLE.ID as token,HW_ROLE.TYPE as type from HW_ROLE 
+		WHERE  HW_ROLE.ID = #{token} 
+	</select>
+    <select id="getObjFully" resultType="prj.user.model.HwRole">
+		select HW_ROLE.NAME as name,HW_ROLE.NT as nt,HW_ROLE.ID as token,HW_ROLE.TYPE as type,HW_MODEL0.ID as tokenOfModel,HW_MODEL0.NAME as modelDesp from HW_ROLE 
+ left join HW_MODEL HW_MODEL0 on (
+HW_MODEL0.ID = HW_ROLE.MODEL_ID)  
+		WHERE  HW_ROLE.ID = #{token} 
+	</select>
+	<select id="getCount" resultType="int" >
+        select count(*) from HW_ROLE;
+    </select>
+	
+	<insert id="insert" parameterType="prj.user.model.HwRole">
+	   insert into HW_ROLE (
+	   MODEL_ID,NAME,NT,ID,TYPE
+	   ) 
+	   values(
+	   	   #{tokenOfModel},#{name},#{nt},#{token},#{type}
+	   )
+    </insert>
+    <delete id="delete">
+	   delete from HW_ROLE where  HW_ROLE.ID = #{token}
+    </delete>
+    <update id="update" parameterType="prj.user.model.HwRole">
+	   update HW_ROLE set 
+	   	   MODEL_ID=#{tokenOfModel},NAME=#{name},NT=#{nt},TYPE=#{type}
+	   where  HW_ROLE.ID = #{token}
+    </update>
+</mapper>

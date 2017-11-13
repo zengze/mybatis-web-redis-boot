@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        user:
+          name: userDataSource
+          url: jdbc:sqlite:/Applications/zengWork/learn/mybatis-web-redis-boot/init-frame/userinfo.db3
+          maxActive: 10
+          maxIdle: 10
+          maxWait: 500
+          defaultAutoCommit: false
+        common:
+            name: commonDataSource
+            url: jdbc:sqlite:/Applications/zengWork/learn/mybatis-web-redis-boot/init-frame/common.db3
+            maxActive: 10
+            maxIdle: 3
+            maxWait: 500
+            defaultAutoCommit: false
+
+    # Allow Thymeleaf templates to be reloaded at dev time
+    thymeleaf:
+        cache: false

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<!-- happy-generator 1.0.0 生成于 2017-07-28 09:58:28 -->
+<mapper namespace="prj.user.dao.HwViewDao">
+    <select id="queryList" resultType="java.util.HashMap">
+        select HW_VIEW.JSON as json,HW_VIEW.MODULE as module,HW_VIEW.NAME as name,HW_VIEW.NT as nt,HW_VIEW.ROLE_ID as tokenOfRole,HW_VIEW.ID as token from HW_VIEW
+    </select>
+    <select id="searchOne" resultType="prj.user.model.HwView">
+		select HW_VIEW.JSON as json,HW_VIEW.MODULE as module,HW_VIEW.NAME as name,HW_VIEW.NT as nt,HW_VIEW.ROLE_ID as tokenOfRole,HW_VIEW.ID as token from HW_VIEW 
+		<where>
+<if test="json != null">
+AND HW_VIEW.JSON = #{json}
+</if>
+<if test="module != null">
+AND HW_VIEW.MODULE = #{module}
+</if>
+<if test="name != null">
+AND HW_VIEW.NAME = #{name}
+</if>
+<if test="nt != null">
+AND HW_VIEW.NT = #{nt}
+</if>
+<if test="tokenOfRole != null">
+AND HW_VIEW.ROLE_ID = #{tokenOfRole}
+</if>
+<if test="token != null">
+AND HW_VIEW.ID = #{token}
+</if>
+</where>
+ 
+	</select>
+    <select id="searchList" resultType="prj.user.model.HwView">
+		select HW_VIEW.JSON as json,HW_VIEW.MODULE as module,HW_VIEW.NAME as name,HW_VIEW.NT as nt,HW_VIEW.ROLE_ID as tokenOfRole,HW_VIEW.ID as token from HW_VIEW
+		<where>
+<if test="json != null">
+AND HW_VIEW.JSON = #{json}
+</if>
+<if test="module != null">
+AND HW_VIEW.MODULE = #{module}
+</if>
+<if test="name != null">
+AND HW_VIEW.NAME = #{name}
+</if>
+<if test="nt != null">
+AND HW_VIEW.NT = #{nt}
+</if>
+<if test="tokenOfRole != null">
+AND HW_VIEW.ROLE_ID = #{tokenOfRole}
+</if>
+<if test="token != null">
+AND HW_VIEW.ID = #{token}
+</if>
+</where>
+
+    </select>
+
+    <select id="queryListFully"  resultType="prj.user.model.HwView" >
+		select HW_VIEW.JSON as json,HW_VIEW.MODULE as module,HW_VIEW.NAME as name,HW_VIEW.NT as nt,HW_VIEW.ID as token,HW_ROLE0.ID as tokenOfRole,HW_ROLE0.NAME as roleDesp from HW_VIEW
+ left join HW_ROLE HW_ROLE0 on (
+HW_ROLE0.ID = HW_VIEW.ROLE_ID)
+    </select>
+    <select id="queryListByPageFully" resultType="prj.user.model.HwView" >
+		select HW_VIEW.JSON as json,HW_VIEW.MODULE as module,HW_VIEW.NAME as name,HW_VIEW.NT as nt,HW_VIEW.ID as token,HW_ROLE0.ID as tokenOfRole,HW_ROLE0.NAME as roleDesp from HW_VIEW
+ left join HW_ROLE HW_ROLE0 on (
+HW_ROLE0.ID = HW_VIEW.ROLE_ID)
+    </select>
+    <select id="getObj" resultType="prj.user.model.HwView">
+		select HW_VIEW.JSON as json,HW_VIEW.MODULE as module,HW_VIEW.NAME as name,HW_VIEW.NT as nt,HW_VIEW.ROLE_ID as tokenOfRole,HW_VIEW.ID as token from HW_VIEW
+		WHERE  HW_VIEW.ID = #{token}
+	</select>
+    <select id="getObjFully" resultType="prj.user.model.HwView">
+		select HW_VIEW.JSON as json,HW_VIEW.MODULE as module,HW_VIEW.NAME as name,HW_VIEW.NT as nt,HW_VIEW.ID as token,HW_ROLE0.ID as tokenOfRole,HW_ROLE0.NAME as roleDesp from HW_VIEW
+ left join HW_ROLE HW_ROLE0 on (
+HW_ROLE0.ID = HW_VIEW.ROLE_ID)
+		WHERE  HW_VIEW.ID = #{token}
+	</select>
+	<select id="getCount" resultType="int" >
+        select count(*) from HW_VIEW;
+    </select>
+
+	<insert id="insert" parameterType="prj.user.model.HwView">
+	   insert into HW_VIEW (
+	   JSON,MODULE,NAME,NT,ROLE_ID,ID
+	   )
+	   values(
+	   	   #{json},#{module},#{name},#{nt},#{tokenOfRole},#{token}
+	   )
+    </insert>
+    <delete id="delete">
+	   delete from HW_VIEW where  HW_VIEW.ID = #{token}
+    </delete>
+    <update id="update" parameterType="prj.user.model.HwView">
+	   update HW_VIEW set 
+	   	   JSON=#{json},MODULE=#{module},NAME=#{name},NT=#{nt},ROLE_ID=#{tokenOfRole}
+	   where  HW_VIEW.ID = #{token}
+    </update>
+</mapper>

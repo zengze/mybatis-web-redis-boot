@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<!-- happy-generator 1.0.0 生成于 2017-07-27 14:30:00 -->
+<mapper namespace="prj.user.dao.HwModelDao">
+    <select id="queryList" resultType="java.util.HashMap">
+        select HW_MODEL.JSON as json,HW_MODEL.NAME as name,HW_MODEL.NT as nt,HW_MODEL.ID as token from HW_MODEL
+    </select>
+    <select id="searchOne" resultType="prj.user.model.HwModel">
+		select HW_MODEL.JSON as json,HW_MODEL.NAME as name,HW_MODEL.NT as nt,HW_MODEL.ID as token from HW_MODEL 
+		<where>
+<if test="json != null">
+AND HW_MODEL.JSON = #{json}
+</if>
+<if test="name != null">
+AND HW_MODEL.NAME = #{name}
+</if>
+<if test="nt != null">
+AND HW_MODEL.NT = #{nt}
+</if>
+<if test="token != null">
+AND HW_MODEL.ID = #{token}
+</if>
+</where>
+ 
+	</select>
+    <select id="searchList" resultType="prj.user.model.HwModel">
+		select HW_MODEL.JSON as json,HW_MODEL.NAME as name,HW_MODEL.NT as nt,HW_MODEL.ID as token from HW_MODEL
+		<where>
+<if test="json != null">
+AND HW_MODEL.JSON = #{json}
+</if>
+<if test="name != null">
+AND HW_MODEL.NAME = #{name}
+</if>
+<if test="nt != null">
+AND HW_MODEL.NT = #{nt}
+</if>
+<if test="token != null">
+AND HW_MODEL.ID = #{token}
+</if>
+</where>
+
+    </select>
+
+    <select id="queryListFully"  resultType="prj.user.model.HwModel" >
+		select HW_MODEL.JSON as json,HW_MODEL.NAME as name,HW_MODEL.NT as nt,HW_MODEL.ID as token from HW_MODEL 
+    </select>
+    <select id="queryListByPageFully" resultType="prj.user.model.HwModel" >
+		select HW_MODEL.JSON as json,HW_MODEL.NAME as name,HW_MODEL.NT as nt,HW_MODEL.ID as token from HW_MODEL 
+    </select>
+    <select id="getObj" resultType="prj.user.model.HwModel">
+		select HW_MODEL.JSON as json,HW_MODEL.NAME as name,HW_MODEL.NT as nt,HW_MODEL.ID as token from HW_MODEL 
+		WHERE  HW_MODEL.ID = #{token} 
+	</select>
+    <select id="getObjFully" resultType="prj.user.model.HwModel">
+		select HW_MODEL.JSON as json,HW_MODEL.NAME as name,HW_MODEL.NT as nt,HW_MODEL.ID as token from HW_MODEL  
+		WHERE  HW_MODEL.ID = #{token} 
+	</select>
+	<select id="getCount" resultType="int" >
+        select count(*) from HW_MODEL;
+    </select>
+	
+	<insert id="insert" parameterType="prj.user.model.HwModel">
+	   insert into HW_MODEL (
+	   JSON,NAME,NT,ID
+	   ) 
+	   values(
+	   	   #{json},#{name},#{nt},#{token}
+	   )
+    </insert>
+    <delete id="delete">
+	   delete from HW_MODEL where  HW_MODEL.ID = #{token}
+    </delete>
+    <update id="update" parameterType="prj.user.model.HwModel">
+	   update HW_MODEL set 
+	   	   JSON=#{json},NAME=#{name},NT=#{nt}
+	   where  HW_MODEL.ID = #{token}
+    </update>
+</mapper>

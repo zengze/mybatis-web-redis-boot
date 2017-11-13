@@ -1,0 +1,1 @@
+sqlite3 common.db3 < .\tools\sql.txt

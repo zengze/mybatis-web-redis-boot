@@ -1,0 +1,37 @@
+server:  
+    port: 8090  
+    session-timeout: 30  
+    tomcat.max-threads: 0  
+    tomcat.uri-encoding: UTF-8
+
+
+    # Allow Thymeleaf templates to be reloaded at dev time
+    thymeleaf:
+        cache: false
+
+
+# 如果不是在一个web服务中的话，camel会在启动后立刻停止;为了解决这种问题要把下面这个变量设置成true
+# 如果是在web服务器,则要设置这个变量=false,就是不单独启动线程，否则测试的时候会提示出错
+camel:
+  springboot:
+    main-run-controller: false
+
+mybatis:
+    #typeAliasesPackage: prj.projectname.dao
+    plugins:
+        userPageConfig:
+            dbms: MYSQL
+            sqlRegex: .*ByPage.*
+        commonPageConfig:
+            dbms: MYSQL
+            sqlRegex: .*ByPage.*
+
+token:
+    secretKey: defaultKey
+    # token多久过期 单位(分钟)
+    tokenExpires: 600
+    tokenRefreshTTL: 14400
+    
+spring:
+    profiles:
+        active: development

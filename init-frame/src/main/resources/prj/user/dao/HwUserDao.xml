@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<!-- happy-generator 1.0.0 生成于 2017-07-27 14:30:00 -->
+<mapper namespace="prj.user.dao.HwUserDao">
+    <select id="queryList" resultType="java.util.HashMap">
+        select HW_USER.ALIAS as alias,HW_USER.NT as nt,HW_USER.PASSWORD as password,HW_USER.ROLE_ID as tokenOfRole,HW_USER.STATE as state,HW_USER.ID as token,HW_USER.USERNAME as username from HW_USER
+    </select>
+    <select id="searchOne" resultType="prj.user.model.HwUser">
+		select HW_USER.ALIAS as alias,HW_USER.NT as nt,HW_USER.PASSWORD as password,HW_USER.ROLE_ID as tokenOfRole,HW_USER.STATE as state,HW_USER.ID as token,HW_USER.USERNAME as username from HW_USER 
+		<where>
+<if test="alias != null">
+AND HW_USER.ALIAS = #{alias}
+</if>
+<if test="nt != null">
+AND HW_USER.NT = #{nt}
+</if>
+<if test="password != null">
+AND HW_USER.PASSWORD = #{password}
+</if>
+<if test="tokenOfRole != null">
+AND HW_USER.ROLE_ID = #{tokenOfRole}
+</if>
+<if test="state != null">
+AND HW_USER.STATE = #{state}
+</if>
+<if test="token != null">
+AND HW_USER.ID = #{token}
+</if>
+<if test="username != null">
+AND HW_USER.USERNAME = #{username}
+</if>
+</where>
+ 
+	</select>
+    <select id="searchList" resultType="prj.user.model.HwUser">
+		select HW_USER.ALIAS as alias,HW_USER.NT as nt,HW_USER.PASSWORD as password,HW_USER.ROLE_ID as tokenOfRole,HW_USER.STATE as state,HW_USER.ID as token,HW_USER.USERNAME as username from HW_USER
+		<where>
+<if test="alias != null">
+AND HW_USER.ALIAS = #{alias}
+</if>
+<if test="nt != null">
+AND HW_USER.NT = #{nt}
+</if>
+<if test="password != null">
+AND HW_USER.PASSWORD = #{password}
+</if>
+<if test="tokenOfRole != null">
+AND HW_USER.ROLE_ID = #{tokenOfRole}
+</if>
+<if test="state != null">
+AND HW_USER.STATE = #{state}
+</if>
+<if test="token != null">
+AND HW_USER.ID = #{token}
+</if>
+<if test="username != null">
+AND HW_USER.USERNAME = #{username}
+</if>
+</where>
+
+    </select>
+
+    <select id="queryListFully"  resultType="prj.user.model.HwUser" >
+		select HW_USER.ALIAS as alias,HW_USER.NT as nt,HW_USER.PASSWORD as password,HW_USER.STATE as state,HW_USER.ID as token,HW_USER.USERNAME as username,HW_ROLE0.ID as tokenOfRole,HW_ROLE0.NAME as roleDesp from HW_USER 
+ left join HW_ROLE HW_ROLE0 on (
+HW_ROLE0.ID = HW_USER.ROLE_ID) 
+    </select>
+    <select id="queryListByPageFully" resultType="prj.user.model.HwUser" >
+		select HW_USER.ALIAS as alias,HW_USER.NT as nt,HW_USER.PASSWORD as password,HW_USER.STATE as state,HW_USER.ID as token,HW_USER.USERNAME as username,HW_ROLE0.ID as tokenOfRole,HW_ROLE0.NAME as roleDesp from HW_USER 
+ left join HW_ROLE HW_ROLE0 on (
+HW_ROLE0.ID = HW_USER.ROLE_ID) 
+    </select>
+    <select id="getObj" resultType="prj.user.model.HwUser">
+		select HW_USER.ALIAS as alias,HW_USER.NT as nt,HW_USER.PASSWORD as password,HW_USER.ROLE_ID as tokenOfRole,HW_USER.STATE as state,HW_USER.ID as token,HW_USER.USERNAME as username from HW_USER 
+		WHERE  HW_USER.ID = #{token} 
+	</select>
+    <select id="getObjFully" resultType="prj.user.model.HwUser">
+		select HW_USER.ALIAS as alias,HW_USER.NT as nt,HW_USER.PASSWORD as password,HW_USER.STATE as state,HW_USER.ID as token,HW_USER.USERNAME as username,HW_ROLE0.ID as tokenOfRole,HW_ROLE0.NAME as roleDesp from HW_USER 
+ left join HW_ROLE HW_ROLE0 on (
+HW_ROLE0.ID = HW_USER.ROLE_ID)  
+		WHERE  HW_USER.ID = #{token} 
+	</select>
+	<select id="getCount" resultType="int" >
+        select count(*) from HW_USER;
+    </select>
+	
+	<insert id="insert" parameterType="prj.user.model.HwUser">
+	   insert into HW_USER (
+	   ALIAS,NT,PASSWORD,ROLE_ID,STATE,ID,USERNAME
+	   ) 
+	   values(
+	   	   #{alias},#{nt},#{password},#{tokenOfRole},#{state},#{token},#{username}
+	   )
+    </insert>
+    <delete id="delete">
+	   delete from HW_USER where  HW_USER.ID = #{token}
+    </delete>
+    <update id="update" parameterType="prj.user.model.HwUser">
+	   update HW_USER set 
+	   	   ALIAS=#{alias},NT=#{nt},PASSWORD=#{password},ROLE_ID=#{tokenOfRole},STATE=#{state},USERNAME=#{username}
+	   where  HW_USER.ID = #{token}
+    </update>
+</mapper>

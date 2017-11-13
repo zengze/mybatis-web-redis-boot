@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<!-- happy-generator 1.0.0 生成于 2017-08-22 11:41:24 -->
+<mapper namespace="prj.projectname.dao.WrAdmaBDao">
+    <select id="queryList" resultType="java.util.HashMap">
+        select WR_ADMA_B.ADDR as addr,WR_ADMA_B.EMAIL as email,WR_ADMA_B.FAX as fax,WR_ADMA_B.FULLDOMAIN as fulldomain,WR_ADMA_B.LR_NM as lrNm,WR_ADMA_B.MENB as menb,WR_ADMA_B.NT as nt,WR_ADMA_B.ORG_CD as orgCd,WR_ADMA_B.ORG_NM as orgNm,WR_ADMA_B.ORG_SCAL as orgScal,WR_ADMA_B.ORG_SHNM as orgShnm,WR_ADMA_B.ORG_TP as orgTp,WR_ADMA_B.PARENT as orgCdOfParent,WR_ADMA_B.PARTDOMAIN as partdomain,WR_ADMA_B.TEL as tel,WR_ADMA_B.TS as ts,WR_ADMA_B.WEB as web,WR_ADMA_B.ZIP as zip from WR_ADMA_B
+    </select>
+    <select id="searchOne" resultType="prj.projectname.model.WrAdmaB">
+		select WR_ADMA_B.ADDR as addr,WR_ADMA_B.EMAIL as email,WR_ADMA_B.FAX as fax,WR_ADMA_B.FULLDOMAIN as fulldomain,WR_ADMA_B.LR_NM as lrNm,WR_ADMA_B.MENB as menb,WR_ADMA_B.NT as nt,WR_ADMA_B.ORG_CD as orgCd,WR_ADMA_B.ORG_NM as orgNm,WR_ADMA_B.ORG_SCAL as orgScal,WR_ADMA_B.ORG_SHNM as orgShnm,WR_ADMA_B.ORG_TP as orgTp,WR_ADMA_B.PARENT as orgCdOfParent,WR_ADMA_B.PARTDOMAIN as partdomain,WR_ADMA_B.TEL as tel,WR_ADMA_B.TS as ts,WR_ADMA_B.WEB as web,WR_ADMA_B.ZIP as zip from WR_ADMA_B 
+		<where>
+<if test="addr != null">
+AND WR_ADMA_B.ADDR = #{addr}
+</if>
+<if test="email != null">
+AND WR_ADMA_B.EMAIL = #{email}
+</if>
+<if test="fax != null">
+AND WR_ADMA_B.FAX = #{fax}
+</if>
+<if test="fulldomain != null">
+AND WR_ADMA_B.FULLDOMAIN = #{fulldomain}
+</if>
+<if test="lrNm != null">
+AND WR_ADMA_B.LR_NM = #{lrNm}
+</if>
+<if test="menb != null">
+AND WR_ADMA_B.MENB = #{menb}
+</if>
+<if test="nt != null">
+AND WR_ADMA_B.NT = #{nt}
+</if>
+<if test="orgCd != null">
+AND WR_ADMA_B.ORG_CD = #{orgCd}
+</if>
+<if test="orgNm != null">
+AND WR_ADMA_B.ORG_NM = #{orgNm}
+</if>
+<if test="orgScal != null">
+AND WR_ADMA_B.ORG_SCAL = #{orgScal}
+</if>
+<if test="orgShnm != null">
+AND WR_ADMA_B.ORG_SHNM = #{orgShnm}
+</if>
+<if test="orgTp != null">
+AND WR_ADMA_B.ORG_TP = #{orgTp}
+</if>
+<if test="orgCdOfParent != null">
+AND WR_ADMA_B.PARENT = #{orgCdOfParent}
+</if>
+<if test="partdomain != null">
+AND WR_ADMA_B.PARTDOMAIN = #{partdomain}
+</if>
+<if test="tel != null">
+AND WR_ADMA_B.TEL = #{tel}
+</if>
+<if test="ts != null">
+AND WR_ADMA_B.TS = #{ts}
+</if>
+<if test="web != null">
+AND WR_ADMA_B.WEB = #{web}
+</if>
+<if test="zip != null">
+AND WR_ADMA_B.ZIP = #{zip}
+</if>
+</where>
+ 
+	</select>
+    <select id="searchList" resultType="prj.projectname.model.WrAdmaB">
+		select WR_ADMA_B.ADDR as addr,WR_ADMA_B.EMAIL as email,WR_ADMA_B.FAX as fax,WR_ADMA_B.FULLDOMAIN as fulldomain,WR_ADMA_B.LR_NM as lrNm,WR_ADMA_B.MENB as menb,WR_ADMA_B.NT as nt,WR_ADMA_B.ORG_CD as orgCd,WR_ADMA_B.ORG_NM as orgNm,WR_ADMA_B.ORG_SCAL as orgScal,WR_ADMA_B.ORG_SHNM as orgShnm,WR_ADMA_B.ORG_TP as orgTp,WR_ADMA_B.PARENT as orgCdOfParent,WR_ADMA_B.PARTDOMAIN as partdomain,WR_ADMA_B.TEL as tel,WR_ADMA_B.TS as ts,WR_ADMA_B.WEB as web,WR_ADMA_B.ZIP as zip from WR_ADMA_B
+		<where>
+<if test="addr != null">
+AND WR_ADMA_B.ADDR = #{addr}
+</if>
+<if test="email != null">
+AND WR_ADMA_B.EMAIL = #{email}
+</if>
+<if test="fax != null">
+AND WR_ADMA_B.FAX = #{fax}
+</if>
+<if test="fulldomain != null">
+AND WR_ADMA_B.FULLDOMAIN = #{fulldomain}
+</if>
+<if test="lrNm != null">
+AND WR_ADMA_B.LR_NM = #{lrNm}
+</if>
+<if test="menb != null">
+AND WR_ADMA_B.MENB = #{menb}
+</if>
+<if test="nt != null">
+AND WR_ADMA_B.NT = #{nt}
+</if>
+<if test="orgCd != null">
+AND WR_ADMA_B.ORG_CD = #{orgCd}
+</if>
+<if test="orgNm != null">
+AND WR_ADMA_B.ORG_NM = #{orgNm}
+</if>
+<if test="orgScal != null">
+AND WR_ADMA_B.ORG_SCAL = #{orgScal}
+</if>
+<if test="orgShnm != null">
+AND WR_ADMA_B.ORG_SHNM = #{orgShnm}
+</if>
+<if test="orgTp != null">
+AND WR_ADMA_B.ORG_TP = #{orgTp}
+</if>
+<if test="orgCdOfParent != null">
+AND WR_ADMA_B.PARENT = #{orgCdOfParent}
+</if>
+<if test="partdomain != null">
+AND WR_ADMA_B.PARTDOMAIN = #{partdomain}
+</if>
+<if test="tel != null">
+AND WR_ADMA_B.TEL = #{tel}
+</if>
+<if test="ts != null">
+AND WR_ADMA_B.TS = #{ts}
+</if>
+<if test="web != null">
+AND WR_ADMA_B.WEB = #{web}
+</if>
+<if test="zip != null">
+AND WR_ADMA_B.ZIP = #{zip}
+</if>
+</where>
+
+    </select>
+    <select id="queryListFully"  resultType="prj.projectname.model.WrAdmaB" >
+		select WR_ADMA_B.ADDR as addr,WR_ADMA_B.EMAIL as email,WR_ADMA_B.FAX as fax,WR_ADMA_B.FULLDOMAIN as fulldomain,WR_ADMA_B.LR_NM as lrNm,WR_ADMA_B.MENB as menb,WR_ADMA_B.NT as nt,WR_ADMA_B.ORG_CD as orgCd,WR_ADMA_B.ORG_NM as orgNm,WR_ADMA_B.ORG_SCAL as orgScal,WR_ADMA_B.ORG_SHNM as orgShnm,WR_ADMA_B.ORG_TP as orgTp,WR_ADMA_B.PARTDOMAIN as partdomain,WR_ADMA_B.TEL as tel,WR_ADMA_B.TS as ts,WR_ADMA_B.WEB as web,WR_ADMA_B.ZIP as zip,WR_ADMA_B0.ORG_CD as orgCdOfParent,WR_ADMA_B0.ORG_NM as parentDesp from WR_ADMA_B 
+ left join WR_ADMA_B WR_ADMA_B0 on (
+WR_ADMA_B0.ORG_CD = WR_ADMA_B.PARENT) 
+    </select>
+    <select id="queryListByPageFully" resultType="prj.projectname.model.WrAdmaB" >
+		select WR_ADMA_B.ADDR as addr,WR_ADMA_B.EMAIL as email,WR_ADMA_B.FAX as fax,WR_ADMA_B.FULLDOMAIN as fulldomain,WR_ADMA_B.LR_NM as lrNm,WR_ADMA_B.MENB as menb,WR_ADMA_B.NT as nt,WR_ADMA_B.ORG_CD as orgCd,WR_ADMA_B.ORG_NM as orgNm,WR_ADMA_B.ORG_SCAL as orgScal,WR_ADMA_B.ORG_SHNM as orgShnm,WR_ADMA_B.ORG_TP as orgTp,WR_ADMA_B.PARTDOMAIN as partdomain,WR_ADMA_B.TEL as tel,WR_ADMA_B.TS as ts,WR_ADMA_B.WEB as web,WR_ADMA_B.ZIP as zip,WR_ADMA_B0.ORG_CD as orgCdOfParent,WR_ADMA_B0.ORG_NM as parentDesp from WR_ADMA_B 
+ left join WR_ADMA_B WR_ADMA_B0 on (
+WR_ADMA_B0.ORG_CD = WR_ADMA_B.PARENT) 
+    </select>
+    <select id="getObj" resultType="prj.projectname.model.WrAdmaB">
+		select WR_ADMA_B.ADDR as addr,WR_ADMA_B.EMAIL as email,WR_ADMA_B.FAX as fax,WR_ADMA_B.FULLDOMAIN as fulldomain,WR_ADMA_B.LR_NM as lrNm,WR_ADMA_B.MENB as menb,WR_ADMA_B.NT as nt,WR_ADMA_B.ORG_CD as orgCd,WR_ADMA_B.ORG_NM as orgNm,WR_ADMA_B.ORG_SCAL as orgScal,WR_ADMA_B.ORG_SHNM as orgShnm,WR_ADMA_B.ORG_TP as orgTp,WR_ADMA_B.PARENT as orgCdOfParent,WR_ADMA_B.PARTDOMAIN as partdomain,WR_ADMA_B.TEL as tel,WR_ADMA_B.TS as ts,WR_ADMA_B.WEB as web,WR_ADMA_B.ZIP as zip from WR_ADMA_B 
+		WHERE  WR_ADMA_B.ORG_CD = #{orgCd} 
+	</select>
+    <select id="getObjFully" resultType="prj.projectname.model.WrAdmaB">
+		select WR_ADMA_B.ADDR as addr,WR_ADMA_B.EMAIL as email,WR_ADMA_B.FAX as fax,WR_ADMA_B.FULLDOMAIN as fulldomain,WR_ADMA_B.LR_NM as lrNm,WR_ADMA_B.MENB as menb,WR_ADMA_B.NT as nt,WR_ADMA_B.ORG_CD as orgCd,WR_ADMA_B.ORG_NM as orgNm,WR_ADMA_B.ORG_SCAL as orgScal,WR_ADMA_B.ORG_SHNM as orgShnm,WR_ADMA_B.ORG_TP as orgTp,WR_ADMA_B.PARTDOMAIN as partdomain,WR_ADMA_B.TEL as tel,WR_ADMA_B.TS as ts,WR_ADMA_B.WEB as web,WR_ADMA_B.ZIP as zip,WR_ADMA_B0.ORG_CD as orgCdOfParent,WR_ADMA_B0.ORG_NM as parentDesp from WR_ADMA_B 
+ left join WR_ADMA_B WR_ADMA_B0 on (
+WR_ADMA_B0.ORG_CD = WR_ADMA_B.PARENT)  
+		WHERE  WR_ADMA_B.ORG_CD = #{orgCd} 
+	</select>
+	<select id="getCount" resultType="int" >
+        select count(*) from WR_ADMA_B;
+    </select>
+	
+	<insert id="insert" parameterType="prj.projectname.model.WrAdmaB">
+	   insert into WR_ADMA_B (
+	   ADDR,EMAIL,FAX,FULLDOMAIN,LR_NM,MENB,NT,ORG_CD,ORG_NM,ORG_SCAL,ORG_SHNM,ORG_TP,PARENT,PARTDOMAIN,TEL,TS,WEB,ZIP
+	   ) 
+	   values(
+	   	   #{addr},#{email},#{fax},#{fulldomain},#{lrNm},#{menb},#{nt},#{orgCd},#{orgNm},#{orgScal},#{orgShnm},#{orgTp},#{orgCdOfParent},#{partdomain},#{tel},#{ts},#{web},#{zip}
+	   )
+    </insert>
+    <delete id="delete">
+	   delete from WR_ADMA_B where  WR_ADMA_B.ORG_CD = #{orgCd}
+    </delete>
+    <update id="update" parameterType="prj.projectname.model.WrAdmaB">
+	   update WR_ADMA_B set 
+	   	   ADDR=#{addr},EMAIL=#{email},FAX=#{fax},FULLDOMAIN=#{fulldomain},LR_NM=#{lrNm},MENB=#{menb},NT=#{nt},ORG_NM=#{orgNm},ORG_SCAL=#{orgScal},ORG_SHNM=#{orgShnm},ORG_TP=#{orgTp},PARENT=#{orgCdOfParent},PARTDOMAIN=#{partdomain},TEL=#{tel},TS=#{ts},WEB=#{web},ZIP=#{zip}
+	   where  WR_ADMA_B.ORG_CD = #{orgCd}
+    </update>
+</mapper>
