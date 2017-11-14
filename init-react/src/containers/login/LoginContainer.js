@@ -79,10 +79,9 @@ class LoginContainer extends Component {
           <div className="login-header">
             <a to="#">
               <img alt="" className="login-logo" src="https://gw.alipayobjects.com/zos/rmsportal/NGCCBOENpgTXpBWUIPnI.svg" />
-              <span className="login-title">Ant Design</span>
+              <span className="login-title">爱美斯国际物流</span>
             </a>
           </div>
-          <p className="login-desc">Ant Design 是西湖区最具影响力的 Web 设计规范</p>
         </div>
         <div className="login-main">
           <Form onSubmit={this.handleSubmit}>

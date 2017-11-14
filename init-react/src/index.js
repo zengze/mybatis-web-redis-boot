@@ -9,4 +9,4 @@ import './style.less'
 render(
     <Provider store={store}>
     <Router/>
-</Provider>, document.body.appendChild(document.createElement('div')));
+</Provider>, document.getElementById('react-content'));
