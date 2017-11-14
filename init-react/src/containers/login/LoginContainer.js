@@ -80,7 +80,7 @@ class LoginContainer extends Component {
       <div className="login-container">
         <div className="login-top">
           <div className="login-header">
-            <a to="#">
+            <a href="">
               <img alt="" className="login-logo" src="https://gw.alipayobjects.com/zos/rmsportal/NGCCBOENpgTXpBWUIPnI.svg" />
               <span className="login-title">爱美斯国际物流</span>
             </a>
@@ -192,7 +192,7 @@ class LoginContainer extends Component {
             <span className="iconAlipay" />
             <span className="iconTaobao" />
             <span className="iconWeibo" />
-            <a className="register" href="#/user/register">注册账户</a>
+            <a className="register" href="">注册账户</a>
           </div>
         </div>
         <div className="login-footer">
