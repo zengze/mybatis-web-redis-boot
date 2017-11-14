@@ -13,7 +13,7 @@ import MyBreadcrumb from './components/MyBreadcrumb';
 import SearchHeader from './components/SearchHeader';
 
 import './Main.less';
-let style = localStorage.getItem('style')
+let style = localStorage.getItem('style');
 if(style == 'green'){
   require('./green.less')
 }else{
