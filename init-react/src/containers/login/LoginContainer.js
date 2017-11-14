@@ -16,8 +16,10 @@ class LoginContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.login.status === 'ok') {
-      this.props.dispatch(routerRedux.push('/'));
+    if(nextProps.data != this.props.data) {
+      this.setState({
+        status: nextProps.data,
+      });
     }
   }
 
@@ -45,14 +47,15 @@ class LoginContainer extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { type } = this.state;
-    this.props.form.validateFields({ force: true },
+    const { getFieldValue, validateFields } = this.props.form;
+
+    const userName = getFieldValue('userName');
+    const password = getFieldValue('password');
+
+    validateFields({ force: true },
       (err, values) => {
         if (!err) {
-          this.props.dispatch({
-            type: `login/${type}Submit`,
-            payload: values,
-          });
+          this.props.login(userName,password);
         }
       }
     );
@@ -70,9 +73,9 @@ class LoginContainer extends Component {
   }
 
   render() {
-    const { form, login } = this.props;
-    const { getFieldDecorator } = form;
-    const { count, type } = this.state;
+    const { getFieldDecorator } = this.props.form;
+    const { count, type, status } = this.state;
+
     return (
       <div className="login-container">
         <div className="login-top">
@@ -88,9 +91,8 @@ class LoginContainer extends Component {
             <Tabs animated={false} className="tabs" activeKey={type} onChange={this.onSwitch}>
               <TabPane tab="账户密码登录" key="account">
                 {
-                  login.status === 'error' &&
-                  login.type === 'account' &&
-                  login.submitting === false &&
+                  status === 'REQUEST' &&
+                  type === 'account' &&
                   this.renderMessage('账户或密码错误')
                 }
                 <FormItem>
@@ -123,9 +125,8 @@ class LoginContainer extends Component {
               </TabPane>
               <TabPane tab="手机号登录" key="mobile">
                 {
-                  login.status === 'error' &&
-                  login.type === 'mobile' &&
-                  login.submitting === false &&
+                  status === 'REQUEST' &&
+                  type === 'mobile' &&
                   this.renderMessage('验证码错误')
                 }
                 <FormItem>
@@ -180,7 +181,7 @@ class LoginContainer extends Component {
                 <Checkbox style={{ marginBottom: 0 }}>自动登录</Checkbox>
               )}
               <a className="forgot" href="">忘记密码</a>
-              <Button size="large" loading={login.submitting} className="submit" type="primary" htmlType="submit">
+              <Button size="large" className="submit" type="primary" htmlType="submit">
                 登录
               </Button>
             </FormItem>
@@ -205,7 +206,7 @@ class LoginContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    data : state.loginReduce.status
+    data: state.loginReduce.status
   }
 }
 
