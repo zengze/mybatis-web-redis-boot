@@ -1,0 +1,76 @@
+@import "~antd/lib/style/themes/default.less";
+
+.layout-header {
+  padding: 0 12px 0 0;
+  background: #3f506a;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  position: relative;
+}
+
+.layout-logo {
+  height: 64px;
+  position: relative;
+  line-height: 64px;
+  padding-left: 16px;
+  transition: all .3s;
+  background: #002140;
+  overflow: hidden;
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+  }
+  span {
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    margin-left: 12px;
+    font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+  }
+}
+
+:global(.ant-layout-sider-collapsed) .layout-logo {
+  padding-left: 16px;
+  > a {
+    width: 32px;
+  }
+}
+
+.layout-trigger {
+  font-size: 20px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: all .3s;
+  padding: 0 24px;
+  color: #fff;
+}
+
+@media screen and (max-width: @screen-xs) {
+  .layout-trigger {
+    display: none;
+  }
+}
+
+.menu {
+  :global(.anticon) {
+    margin-right: 8px;
+  }
+  :global(.ant-dropdown-menu-item) {
+    width: 160px;
+  }
+}
+
+:global {
+  .ant-layout {
+    overflow-x: hidden;
+  }
+}
+
+.layout-sider {
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+  position: relative;
+  z-index: 10;
+}
