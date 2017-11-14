@@ -104,7 +104,7 @@ class LoginContainer extends Component {
                     <Input
                       size="large"
                       prefix={<Icon type="user" className="prefixIcon" />}
-                      placeholder="admin"
+                      placeholder="用户名"
                     />
                   )}
                 </FormItem>
@@ -118,7 +118,7 @@ class LoginContainer extends Component {
                       size="large"
                       prefix={<Icon type="lock" className="prefixIcon" />}
                       type="password"
-                      placeholder="888888"
+                      placeholder="密码"
                     />
                   )}
                 </FormItem>
