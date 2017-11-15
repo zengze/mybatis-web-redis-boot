@@ -55,17 +55,19 @@ class MainContainer extends React.Component {
         const { collapsed } = this.state;
 
         const menuList = this.props.data.map(item => {
-
-          return (
-            <SubMenu key={item.menuId} style={{marginTop:"50px"}} title={<span>{item.icon && <Icon type={item.icon} />}<span>{item.menuName}</span></span>}>
-            {
-              item.subMenu.map(subMenuItem =>
-                <Menu.Item key={subMenuItem.menuId}>
-                  {subMenuItem.linkTo && <a href={subMenuItem.linkTo}>{subMenuItem.menuName}</a>}
-                </Menu.Item>)
-            }
-            </SubMenu>
-          )
+          if(item.linkTo != '') {
+            return (
+              <SubMenu key={item.menuId} style={{marginTop:"50px"}} title={<span>{item.icon && <Icon type={item.icon} />}<span>{item.menuName}</span></span>}>
+              {
+                item.subMenu.map(subMenuItem =>
+                  <Menu.Item key={subMenuItem.menuId}>
+                    {subMenuItem.linkTo && <a href={subMenuItem.linkTo}>{subMenuItem.menuName}</a>}
+                  </Menu.Item>
+                )
+              }
+              </SubMenu>
+            )
+          }
         });
 
         return (
