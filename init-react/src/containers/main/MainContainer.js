@@ -90,63 +90,63 @@ class MainContainer extends React.Component {
 
         // Don't show popup menu when it is been collapsed
         const menuProps = collapsed ? {} : {
-          openKeys: openKeys,
+          defaultOpenKeys: openKeys,
         };
 
         return (
+          <div>
             <Layout>
-                <Layout>
-                  <Sider
-                    trigger={null}
-                    collapsible
-                    collapsed={collapsed}
-                    width={256}
-                    className="layout-sider"
-                  >
-                    <div className="layout-logo">
-                      <a href="">
-                        <img src="https://gw.alipayobjects.com/zos/rmsportal/iwWyPinUoseUxIAeElSx.svg" alt="logo" />
-                        <span>爱美斯国际物流</span>
-                      </a>
-                    </div>
-                    <Menu
-                      theme="dark"
-                      mode="inline"
-                      {...menuProps}
-                      onOpenChange={this.handleOpenChange}
-                      selectedKeys={this.getCurrentMenuSelectedKeys()}
-                      style={{ margin: '16px 0', width: '100%' }}
-                    >
-                      {menuList}
-                    </Menu>
-                  </Sider>
-                  <Layout>
-                    <Header className="layout-header">
-                      <Icon
-                        className="layout-trigger"
-                        type={collapsed ? 'menu-unfold' : 'menu-fold'}
-                        onClick={this.toggle}
-                      />
-                      <div className="header-logout" onClick={this.logoutClick}><Icon type="logout" style={{marginRight:"15px",fontSize:"20px"}}/>退出</div>
-                      <div className="header-list header-fixed">
-                        <ul>
-                          {
-                            data.map((e,index)=>{
-                              return (
-                                <li key={index} className={index==this.state.active?'active':null} onClick={this.activeClick.bind(this,index)}><a href="#">{e}</a></li>
-                              )
-                            })
-                          }
-                        </ul>
-                      </div>
-                    </Header>
-                    <MyBreadcrumb routes={this.props.routes}/>
-                    <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-                      {this.props.children}
-                    </Content>
-                  </Layout>
-                </Layout>
+              <Sider
+                trigger={null}
+                collapsible
+                collapsed={collapsed}
+                width={256}
+                className="layout-sider"
+              >
+                <div className="layout-logo">
+                  <a href="">
+                    <img src="https://gw.alipayobjects.com/zos/rmsportal/iwWyPinUoseUxIAeElSx.svg" alt="logo" />
+                    <span>爱美斯国际物流</span>
+                  </a>
+                </div>
+                <Menu
+                  theme="dark"
+                  mode="inline"
+                  {...menuProps}
+                  onOpenChange={this.handleOpenChange}
+                  selectedKeys={this.getCurrentMenuSelectedKeys()}
+                  style={{ margin: '16px 0', width: '100%' }}
+                >
+                  {menuList}
+                </Menu>
+              </Sider>
+              <Layout>
+                <Header className="layout-header">
+                  <Icon
+                    className="layout-trigger"
+                    type={collapsed ? 'menu-unfold' : 'menu-fold'}
+                    onClick={this.toggle}
+                  />
+                  <div className="header-logout" onClick={this.logoutClick}><Icon type="logout" style={{marginRight:"15px",fontSize:"20px"}}/>退出</div>
+                  <div className="header-list header-fixed">
+                    <ul>
+                      {
+                        data.map((e,index)=>{
+                          return (
+                            <li key={index} className={index==this.state.active?'active':null} onClick={this.activeClick.bind(this,index)}><a href="#">{e}</a></li>
+                          )
+                        })
+                      }
+                    </ul>
+                  </div>
+                </Header>
+                <MyBreadcrumb routes={this.props.routes}/>
+                <Content style={{ margin: '24px 24px 0', height: '100%' }}>
+                  {this.props.children}
+                </Content>
+              </Layout>
             </Layout>
+          </div>
         );
     }
 }
