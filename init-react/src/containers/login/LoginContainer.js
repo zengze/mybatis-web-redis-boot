@@ -90,11 +90,11 @@ class LoginContainer extends Component {
           <Form onSubmit={this.handleSubmit}>
             <Tabs animated={false} className="tabs" activeKey={type} onChange={this.onSwitch}>
               <TabPane tab="账户密码登录" key="account">
-                {
+                {/* {
                   status === 'REQUEST' &&
                   type === 'account' &&
                   this.renderMessage('账户或密码错误')
-                }
+                } */}
                 <FormItem>
                   {getFieldDecorator('userName', {
                     rules: [{
@@ -124,11 +124,11 @@ class LoginContainer extends Component {
                 </FormItem>
               </TabPane>
               <TabPane tab="手机号登录" key="mobile">
-                {
+                {/* {
                   status === 'REQUEST' &&
                   type === 'mobile' &&
                   this.renderMessage('验证码错误')
-                }
+                } */}
                 <FormItem>
                   {getFieldDecorator('mobile', {
                     rules: [{
