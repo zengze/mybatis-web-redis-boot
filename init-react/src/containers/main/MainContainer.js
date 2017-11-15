@@ -27,6 +27,7 @@ class MainContainer extends React.Component {
         this.state={
           active:0,
           collapsed: false,
+          openKeys: this.getDefaultCollapsedSubMenus(props),
         }
     }
 
@@ -50,17 +51,34 @@ class MainContainer extends React.Component {
       });
     }
 
+    getDefaultCollapsedSubMenus(props) {
+      const { location: { pathname } } = props;
+      return [pathname.split('/').splice(0, 3).join('/')];
+    }
+
+    getCurrentMenuSelectedKeys() {
+      const { location: { pathname } } = this.props;
+      return [pathname];
+    }
+
+    handleOpenChange = (openKeys) => {
+      const lastOpenKey = openKeys[openKeys.length - 1];
+      this.setState({
+        openKeys: [lastOpenKey],
+      });
+    }
+
     render() {
         const data = [ '管理系统', '实时监控', '设置', '帮助'];
-        const { collapsed } = this.state;
+        const { collapsed, openKeys } = this.state;
 
         const menuList = this.props.data.map(item => {
           if(item.linkTo != '') {
             return (
-              <SubMenu key={item.menuId} style={{marginTop:"50px"}} title={<span>{item.icon && <Icon type={item.icon} />}<span>{item.menuName}</span></span>}>
+              <SubMenu key={item.linkTo} style={{marginTop:"50px"}} title={<span>{item.icon && <Icon type={item.icon} />}<span>{item.menuName}</span></span>}>
               {
                 item.subMenu.map(subMenuItem =>
-                  <Menu.Item key={subMenuItem.menuId}>
+                  <Menu.Item key={subMenuItem.linkTo}>
                     {subMenuItem.linkTo && <a href={subMenuItem.linkTo}>{subMenuItem.menuName}</a>}
                   </Menu.Item>
                 )
@@ -69,6 +87,11 @@ class MainContainer extends React.Component {
             )
           }
         });
+
+        // Don't show popup menu when it is been collapsed
+        const menuProps = collapsed ? {} : {
+          openKeys: openKeys,
+        };
 
         return (
             <Layout>
@@ -89,6 +112,9 @@ class MainContainer extends React.Component {
                     <Menu
                       theme="dark"
                       mode="inline"
+                      {...menuProps}
+                      onOpenChange={this.handleOpenChange}
+                      selectedKeys={this.getCurrentMenuSelectedKeys()}
                       style={{ margin: '16px 0', width: '100%' }}
                     >
                       {menuList}
