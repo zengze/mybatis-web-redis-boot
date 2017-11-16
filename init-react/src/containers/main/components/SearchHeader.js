@@ -42,22 +42,23 @@ class SearchHeader  extends Component {
                 <Select placeholder="选择字段"  >
                   <Option value={""} >无</Option>
                   {
-                    
+
                     this.props.columns.map((i,index)=>{
-                    
+
                       return (
                           <Option value={i.key} key={index}>{i.title}</Option>
                       )
                     })
-                    
+
                   }
                 </Select>
               )}
-			  <Button type="primary" htmlType="submit" shape="circle">
-				<Icon type="search" />
+			  <Button type="primary" htmlType="submit">
+  				<Icon type="search" />
+          查询
 			  </Button>
-			  {this.props.reload && (<Button type="primary" shape="circle" onClick={this.props.reload} ><Icon type="reload" /></Button>)}
-			  {this.props.add && <Button type="primary" shape="circle" onClick={this.props.add} ><Icon type="plus" /></Button>}
+			  {this.props.reload && (<Button onClick={this.props.reload} ><Icon type="reload" />刷新</Button>)}
+			  {this.props.add && <Button onClick={this.props.add} ><Icon type="plus" />新增</Button>}
             </Form>
 
         );

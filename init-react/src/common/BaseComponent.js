@@ -170,12 +170,13 @@ addUpdateDelBnts=(columns,delBntLabel="删除",updateBntLabel="修改") => {
           render: (text, record) => (
 
             <div>
-              <span className="Tab-delete" onClick={() => this.delObjById(record.id,this.getQueryParams(this.state.listParam))}>
-
-              </span>
-              <span className="Tab-update" onClick={() => this.getObjById(record.id)}>
-
-              </span>
+              <a onClick={() => this.delObjById(record.id,this.getQueryParams(this.state.listParam))}>
+                删除
+              </a>
+              <span className="ant-divider" />
+              <a onClick={() => this.getObjById(record.id)}>
+                修改
+              </a>
             </div>
 
 

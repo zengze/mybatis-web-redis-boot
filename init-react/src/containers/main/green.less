@@ -25,31 +25,11 @@
 
 }
 
-.ant-table-title,.ant-table-footer{
-   display:none;
-  //padding:16px 32px;
-  //background:#6caf00 top left repeat-x;
-  background: transparent url('@{menuItemImage}') center center no-repeat;
-  background-size:100%;
-  padding: 16px 0;
-  position: relative;
-
-  font-size:17px;
-  font-family: Helvetica, Arial, sans-serif;
-  color: #ffffef;
-  font-weight: bold;
-}
-
 .header .navbar-brand{
   height: 100%;
   font-size:0.6rem;
   color:#fff;
   padding:0;
-
-}
-
-.header .ant-layout-header{
-  height: 0
 
 }
 .header-brand{
@@ -98,9 +78,6 @@
 
 }
 
-.ant-col-1{
-
-}
 .navbar-nav li:not(:last-child){
   border-bottom: 1px solid #fff;
 }
@@ -123,19 +100,6 @@
   }
   #header .collapse.show {
     display: block;
-  }
-
-
-  .ant-layout .main{
-    position: absolute;
-    left:0;
-    bottom:1.4rem;
-    top:74px;
-    right:0;
-    overflow: scroll;
-  }
-  .ant-col-10{
-    width:70%;
   }
 
   .header-list{
@@ -238,14 +202,6 @@
   background-position: center center
 }
 
-
-
-.main-right .ant-layout-content{
-  background: none;
-}
-
-
-
 }
 
 
@@ -263,10 +219,6 @@
   background: url('@{bgBodyImage}');
 }
 
-.ant-layout-content{
-   background: url('/images/mainrightbg_03.png') no-repeat;
-  background-size:cover;
-}
 .header .nav-link {
    color:#fff;
    padding:0;
@@ -319,22 +271,6 @@
 
 }
 
-.ant-btn-primary{
-  background:@header-bg;
-  border-color:@header-bg;
-  &:hover{
-    background:@header-bg;
-      border-color:@header-bg
-  }
-  &:active{
-    border-color:@header-bg
-  }
-
-  &:focus{
-    background:@header-bg;
-      border-color:@header-bg
-  }
-}
 
 .header-logout{
   width:100px;
@@ -374,23 +310,4 @@
   width:55px;
   display: inline-block;
   background: url('@{homeImage}') center center no-repeat;
-}
-.ant-pagination-item-active{
-  background: #469400 url('@{buttonBgImage}') top left repeat-x !important;
-    border-color: #459300 !important;
-    color: #fff !important;
-}
-.ant-pagination-item:focus, .ant-pagination-item:hover{
-
-border-color: @header-bg;
-}
-.ant-table-tbody tr td:nth-child(2){
-  color:#57a000;
-  &:hover{
-    color:#000
-  }
-}
-
-.main   .ant-layout-sider-children>ul{
-      background: url('@{bgBodyImage}');
 }
