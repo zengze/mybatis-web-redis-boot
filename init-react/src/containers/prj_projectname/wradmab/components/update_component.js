@@ -15,7 +15,7 @@ const formAuthorizationLayout = {
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8, offset: 10 },
+  wrapperCol: { span: 8, offset: 3 },
 };
 class WrAdmaBUpdateComponent extends BaseComponent {
     constructor (props) {
@@ -39,11 +39,11 @@ class WrAdmaBUpdateComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
-      
+		  }
+
     	}
- 
-    
+
+
 	autoSeacrchWrAdmaB = (token) => {
     	const listParam = {
 				current : "0",
@@ -52,7 +52,7 @@ class WrAdmaBUpdateComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }   
+		  }
 	this.props.dispatch(wrAdmaBActions.getObjList(this.getQueryParams(listParam)))
 	}
     render() {

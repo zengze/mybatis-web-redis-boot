@@ -13,7 +13,7 @@ const formItemLayout = {
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8, offset: 10 },
+  wrapperCol: { span: 8, offset: 3 },
 };
 class HwViewAddComponent extends BaseComponent {
     constructor (props) {
@@ -40,13 +40,13 @@ class HwViewAddComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
-      
+		  }
+
 		this.props.dispatch(hwRoleActions.getObjList(this.getQueryParams(listParam)))
 
     	}
- 
-    
+
+
 	autoSeacrchHwRole = (token) => {
     	const listParam = {
 				current : "0",
@@ -55,13 +55,13 @@ class HwViewAddComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
+		  }
 	this.props.dispatch(hwRoleActions.getObjList(this.getQueryParams(listParam)))
 	}
     render() {
-    
+
         const { data:hwRoleList,loading:hwRoleListLoading } = this.props.hwRoleListReducer
-	      	
+
         return (
             <div>
               <Form layout='horizontal' onSubmit={this.handleSubmit}>
@@ -78,9 +78,9 @@ class HwViewAddComponent extends BaseComponent {
 }
 const mapStateToProps = (state) => {
   return  {
-         
+
         hwRoleListReducer : state.hwRoleListReducer.toJS()
-	  
+
    }
 }
 const WrappedDynamicRule = Form.create()(HwViewAddComponent);

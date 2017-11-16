@@ -12,7 +12,7 @@ const formItemLayout = {
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8, offset: 10 },
+  wrapperCol: { span: 8, offset: 3 },
 };
 class WrAdmaBAddComponent extends BaseComponent {
     constructor (props) {
@@ -39,11 +39,11 @@ class WrAdmaBAddComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
-      
+		  }
+
     	}
- 
-    
+
+
 	autoSeacrchWrAdmaB = (token) => {
     	const listParam = {
 				current : "0",
@@ -52,13 +52,13 @@ class WrAdmaBAddComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
+		  }
 	this.props.dispatch(wrAdmaBActions.getObjList(this.getQueryParams(listParam)))
 	}
     render() {
-    
+
         const { data:wrAdmaBList,loading:wrAdmaBListLoading } = this.props.wrAdmaBListReducer
-	      	
+
         return (
             <div>
               <Form layout='horizontal' onSubmit={this.handleSubmit}>
@@ -87,9 +87,9 @@ class WrAdmaBAddComponent extends BaseComponent {
 }
 const mapStateToProps = (state) => {
   return  {
-         
+
         wrAdmaBListReducer : state.wrAdmaBListReducer.toJS()
-	  
+
    }
 }
 const WrappedDynamicRule = Form.create()(WrAdmaBAddComponent);

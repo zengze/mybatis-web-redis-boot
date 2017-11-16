@@ -16,7 +16,7 @@ const formAuthorizationLayout = {
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8, offset: 10 },
+  wrapperCol: { span: 8, offset: 3 },
 };
 class HwRoleUpdateComponent extends BaseComponent {
     constructor (props) {
@@ -40,13 +40,13 @@ class HwRoleUpdateComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
-      
+		  }
+
 		this.props.dispatch(hwModelActions.getObjList(this.getQueryParams(listParam)))
 
     	}
- 
-    
+
+
 	autoSeacrchHwModel = (token) => {
     	const listParam = {
 				current : "0",
@@ -55,7 +55,7 @@ class HwRoleUpdateComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }   
+		  }
 	this.props.dispatch(hwModelActions.getObjList(this.getQueryParams(listParam)))
 	}
     render() {
