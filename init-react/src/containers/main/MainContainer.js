@@ -69,7 +69,6 @@ class MainContainer extends React.Component {
     }
 
     render() {
-        const data = [ '管理系统', '实时监控', '设置', '帮助'];
         const { collapsed, openKeys } = this.state;
 
         const menuList = this.props.data.map(item => {
@@ -128,17 +127,6 @@ class MainContainer extends React.Component {
                     onClick={this.toggle}
                   />
                   <div className="header-logout" onClick={this.logoutClick}><Icon type="logout" style={{marginRight:"15px",fontSize:"20px"}}/>退出</div>
-                  <div className="header-list header-fixed">
-                    <ul>
-                      {
-                        data.map((e,index)=>{
-                          return (
-                            <li key={index} className={index==this.state.active?'active':null} onClick={this.activeClick.bind(this,index)}><a href="#">{e}</a></li>
-                          )
-                        })
-                      }
-                    </ul>
-                  </div>
                 </Header>
                 <MyBreadcrumb routes={this.props.routes}/>
                 <Content style={{ margin: '24px 24px 0', height: '100%' }}>

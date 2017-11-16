@@ -2,7 +2,7 @@
 
 .layout-header {
   padding: 0 12px 0 0;
-  background: #3f506a;
+  background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
   position: relative;
 }
@@ -44,7 +44,9 @@
   cursor: pointer;
   transition: all .3s;
   padding: 0 24px;
-  color: #fff;
+  &:hover {
+    background: @primary-1;
+  }
 }
 
 @media screen and (max-width: @screen-xs) {
