@@ -92,7 +92,7 @@ export class SearchableList extends React.Component {
        </AutoComplete>
 
 
-		<Button type="primary" style={{ display:this.props.hasMoreButton?"inline-block":"none" , width: '30px', padding:'0 10px',marginTop: '3%' }} onClick={this.moreClick}><Icon type={this.state.icon} style={{ fontSize: 13 }} />{/*this.state.clickName*/}</Button>
+		<Button type="primary" style={{ display:this.props.hasMoreButton?"inline-block":"none", padding:'0 10px',marginTop: '3%' }} onClick={this.moreClick}><Icon type={this.state.icon} style={{ fontSize: 13 }} />{/*this.state.clickName*/}</Button>
 
 	</span>
     );
