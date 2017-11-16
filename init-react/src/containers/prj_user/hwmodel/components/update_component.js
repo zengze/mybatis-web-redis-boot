@@ -15,7 +15,7 @@ const formAuthorizationLayout = {
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8, offset: 10 },
+  wrapperCol: { span: 8, offset: 3 },
 };
 class HwModelUpdateComponent extends BaseComponent {
     constructor (props) {
@@ -39,11 +39,11 @@ class HwModelUpdateComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
-      
+		  }
+
     	}
- 
-    
+
+
     render() {
         return (
             <div>

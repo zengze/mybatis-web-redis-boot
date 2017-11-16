@@ -13,8 +13,7 @@ const formItemLayout = {
   wrapperCol: { span: 5 },
 };
 const formTailLayout = {
-  labelCol: { span: 4 },
-  wrapperCol: { span: 8, offset: 10 },
+  wrapperCol: { span: 8, offset: 3 },
 };
 
 class HwModelAddComponent extends BaseComponent {
@@ -48,14 +47,14 @@ class HwModelAddComponent extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
-      
+		  }
+
     	}
- 
-    
+
+
 
     render() {
-          	
+
         return (
             <div>
               <Form layout='horizontal' onSubmit={this.handleSubmit}>
@@ -71,7 +70,7 @@ class HwModelAddComponent extends BaseComponent {
 
 const mapStateToProps = (state) => {
   return  {
-           
+
    }
 }
 
