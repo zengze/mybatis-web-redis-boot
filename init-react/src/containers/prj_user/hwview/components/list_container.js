@@ -20,12 +20,12 @@ class HwViewListContainer extends BaseComponent {
 				order:"",
 				columnKey:""
 			  }
-			}        
+			}
     }
     componentWillMount() {
       this.getObjList(this.getQueryParams(this.state.listParam))
     }
-    
+
     onChange = (pagination, filters, sorter) =>{
         let values = Object.assign({},this.state.listParam,sorter?{order:sorter.order,columnKey:sorter.columnKey}:undefined)
         Object.assign(values,pagination);
@@ -34,8 +34,8 @@ class HwViewListContainer extends BaseComponent {
         this.getObjList(listParam)
     }
     add = () => {
-		this.props.dispatch(NavigatorAction('/'+HW_VIEW.URL+'/add'))
-	}
+  		location.href = '#/'+HW_VIEW.URL+'/add'
+  	}
     reload = () => {
 	   const listParam = {
 				current : "0",
@@ -44,8 +44,8 @@ class HwViewListContainer extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
-      
+		  }
+
 		this.getObjList(this.getQueryParams(listParam));
 	}
  render() {

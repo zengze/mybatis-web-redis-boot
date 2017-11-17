@@ -21,14 +21,14 @@ class HwUserListContainer extends BaseComponent {
 				order:"",
 				columnKey:""
 			  }
-			}        
+			}
     }
     componentWillMount() {
       this.getObjList(this.getQueryParams(this.state.listParam))
     }
     add = () => {
-		this.props.dispatch(NavigatorAction('/'+HW_USER.URL+'/add'))
-	}
+  		location.href = '#/'+HW_USER.URL+'/add'
+  	}
     reload = () => {
 	   const listParam = {
 				current : "0",
@@ -37,8 +37,8 @@ class HwUserListContainer extends BaseComponent {
 				keywords:"",
 				order:"",
 				columnKey:""
-		  }    	
-      
+		  }
+
 		this.getObjList(this.getQueryParams(listParam));
 	}
     onChange = (pagination, filters, sorter) =>{
