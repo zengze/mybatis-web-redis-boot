@@ -23,7 +23,7 @@ function* watchGetHwRoleById () {
       const { id } = yield take(HW_ROLE.GET_BY_ID.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(HW_ROLE.URL)+"/"+id)
       yield put(action(HW_ROLE.GET_BY_ID.SUCCESS, {obj: res.data}))
-       hashHistory.push("/prj_user/hwrole/update/"+id)
+      hashHistory.push("/prj_user/hwrole/update/"+id)
     } catch (e) {
       yield put(action(HW_ROLE.GET_BY_ID.FAILURE, {error: e}))
     }
@@ -37,7 +37,7 @@ function* watchAddHwRole () {
       if(res.code == 200){
    	  yield put(action(HW_ROLE.ADD.SUCCESS, {data: res.data}))
       message.success('添加成功')
-      yield put(NavigatorAction('/prj_user/hwrole/list'))
+      location.href = '#/prj_user/hwrole/list'
       }
       else
       {
@@ -56,7 +56,7 @@ function* watchHwRoleUpdate () {
       let res = yield call(Api.request, Api.calcUrl(HW_ROLE.URL), { method: 'PUT', body: obj } )
       if(res.code == 200){
       	  yield put(action(HW_ROLE.UPDATE.SUCCESS, {data: res}))
-          yield put(NavigatorAction('/prj_user/hwrole/list'))
+          location.href = '#/prj_user/hwrole/list'
           message.success('修改成功')
       }
       else

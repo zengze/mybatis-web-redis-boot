@@ -23,7 +23,7 @@ function* watchGetWrAdmaBById () {
       const { id } = yield take(WR_ADMA_B.GET_BY_ID.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(WR_ADMA_B.URL)+"/"+id)
       yield put(action(WR_ADMA_B.GET_BY_ID.SUCCESS, {obj: res.data}))
-       hashHistory.push("/prj_projectname/wradmab/update/"+id)
+      hashHistory.push("/prj_projectname/wradmab/update/"+id)
     } catch (e) {
       yield put(action(WR_ADMA_B.GET_BY_ID.FAILURE, {error: e}))
     }
@@ -37,7 +37,7 @@ function* watchAddWrAdmaB () {
       if(res.code == 200){
    	  yield put(action(WR_ADMA_B.ADD.SUCCESS, {data: res.data}))
       message.success('添加成功')
-      yield put(NavigatorAction('/prj_projectname/wradmab/list'))
+      location.href = '#/prj_projectname/wradmab/list'
       }
       else
       {
@@ -56,7 +56,7 @@ function* watchWrAdmaBUpdate () {
       let res = yield call(Api.request, Api.calcUrl(WR_ADMA_B.URL), { method: 'PUT', body: obj } )
       if(res.code == 200){
       	  yield put(action(WR_ADMA_B.UPDATE.SUCCESS, {data: res}))
-          yield put(NavigatorAction('/prj_projectname/wradmab/list'))
+          location.href = '#/prj_projectname/wradmab/list'
           message.success('修改成功')
       }
       else

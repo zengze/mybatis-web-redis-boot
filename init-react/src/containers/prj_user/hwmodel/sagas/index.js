@@ -23,7 +23,7 @@ function* watchGetHwModelById () {
       const { id } = yield take(HW_MODEL.GET_BY_ID.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(HW_MODEL.URL)+"/"+id)
       yield put(action(HW_MODEL.GET_BY_ID.SUCCESS, {obj: res.data}))
-       hashHistory.push("/prj_user/hwmodel/update/"+id)
+      hashHistory.push("/prj_user/hwmodel/update/"+id)
     } catch (e) {
       yield put(action(HW_MODEL.GET_BY_ID.FAILURE, {error: e}))
     }
@@ -37,7 +37,7 @@ function* watchAddHwModel () {
       if(res.code == 200){
    	  yield put(action(HW_MODEL.ADD.SUCCESS, {data: res.data}))
       message.success('添加成功')
-      yield put(NavigatorAction('/prj_user/hwmodel/list'))
+      location.href = '#/prj_user/hwmodel/list'
       }
       else
       {
@@ -56,7 +56,7 @@ function* watchHwModelUpdate () {
       let res = yield call(Api.request, Api.calcUrl(HW_MODEL.URL), { method: 'PUT', body: obj } )
       if(res.code == 200){
       	  yield put(action(HW_MODEL.UPDATE.SUCCESS, {data: res}))
-          yield put(NavigatorAction('/prj_user/hwmodel/list'))
+          location.href = '#/prj_user/hwmodel/list'
           message.success('修改成功')
       }
       else

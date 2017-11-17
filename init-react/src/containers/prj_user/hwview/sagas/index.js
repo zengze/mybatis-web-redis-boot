@@ -23,7 +23,7 @@ function* watchGetHwViewById () {
       const { id } = yield take(HW_VIEW.GET_BY_ID.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(HW_VIEW.URL)+"/"+id)
       yield put(action(HW_VIEW.GET_BY_ID.SUCCESS, {obj: res.data}))
-       hashHistory.push("/prj_user/hwview/update/"+id)
+      hashHistory.push("/prj_user/hwview/update/"+id)
     } catch (e) {
       yield put(action(HW_VIEW.GET_BY_ID.FAILURE, {error: e}))
     }
@@ -37,7 +37,7 @@ function* watchAddHwView () {
       if(res.code == 200){
    	  yield put(action(HW_VIEW.ADD.SUCCESS, {data: res.data}))
       message.success('添加成功')
-      yield put(NavigatorAction('/prj_user/hwview/list'))
+      location.href = '#/prj_user/hwview/list'
       }
       else
       {
@@ -56,7 +56,7 @@ function* watchHwViewUpdate () {
       let res = yield call(Api.request, Api.calcUrl(HW_VIEW.URL), { method: 'PUT', body: obj } )
       if(res.code == 200){
       	  yield put(action(HW_VIEW.UPDATE.SUCCESS, {data: res}))
-          yield put(NavigatorAction('/prj_user/hwview/list'))
+          location.href = '#/prj_user/hwview/list'
           message.success('修改成功')
       }
       else
