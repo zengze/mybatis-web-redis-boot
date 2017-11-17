@@ -10,7 +10,7 @@ const MyBreadcrumb = ({routes}) => {
         {
           routes.map((item , i) => {
             if(i < routes.length - 1) {
-              return <Breadcrumb.Item key={i}><a href={item.path}>{item.breadcrumbName}</a></Breadcrumb.Item>
+              return <Breadcrumb.Item key={i}><a href={"#" + item.path}>{item.breadcrumbName}</a></Breadcrumb.Item>
             } else {
               return <Breadcrumb.Item key={i}>{item.breadcrumbName}</Breadcrumb.Item>
             }

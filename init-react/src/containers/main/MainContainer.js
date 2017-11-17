@@ -78,7 +78,7 @@ class MainContainer extends React.Component {
               {
                 item.subMenu.map(subMenuItem =>
                   <Menu.Item key={subMenuItem.linkTo}>
-                    {subMenuItem.linkTo && <a href={subMenuItem.linkTo}>{subMenuItem.menuName}</a>}
+                    {subMenuItem.linkTo && <a href={"#" + subMenuItem.linkTo}>{subMenuItem.menuName}</a>}
                   </Menu.Item>
                 )
               }

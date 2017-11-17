@@ -1,4 +1,4 @@
-import { Router , Route , browserHistory,IndexRoute,Redirect ,IndexRedirect} from 'react-router'
+import { Router , Route ,hashHistory, browserHistory,IndexRoute,Redirect ,IndexRedirect} from 'react-router'
 import React from 'react'
 import { routerList } from './allRouter'
 import { breadcrumbName } from 'antd'
@@ -25,7 +25,7 @@ import SecurityUtil from '../common/TokenUtil'
 
    render(){
     return (
-      <Router history={browserHistory}>
+      <Router history={hashHistory}>
            <Route path="/login" component={LoginContainer} />
            <Route path="/" breadcrumbName="主页"
               onEnter={(nextState,replace) => this.checkToken(nextState , replace)}
