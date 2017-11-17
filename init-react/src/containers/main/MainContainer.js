@@ -89,7 +89,7 @@ class MainContainer extends React.Component {
 
         // Don't show popup menu when it is been collapsed
         const menuProps = collapsed ? {} : {
-          defaultOpenKeys: openKeys,
+          openKeys: openKeys,
         };
 
         return (
