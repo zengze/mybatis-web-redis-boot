@@ -41,8 +41,7 @@ function* loginFlow() {
                yield call(TokenUtil.setUserToken,res.data)
                message.info(`欢迎用户：${userName}`)
                yield put(action(LOGIN.SUCCESS))
-               yield put(NavigatorAction('#/'))
-               window.location.reload()
+               location.href = '#/'
              }
            }catch(e){
              console.log(e)

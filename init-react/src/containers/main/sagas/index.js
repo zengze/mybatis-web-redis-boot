@@ -27,8 +27,7 @@ function* watchLogout () {
     try{
         yield call(TokenUtil.delUserToken)
         yield put(action(LOGOUT.SUCCESS))
-        yield put(NavigatorAction('#/login'))
-        window.location.reload()
+        location.href = '#/login'
         message.info(`退出成功`)
 
     }catch(e){
