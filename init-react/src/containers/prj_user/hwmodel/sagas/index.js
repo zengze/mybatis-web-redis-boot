@@ -3,7 +3,7 @@ import { action,NAVIGATE,REQUEST,SUCCESS,FAILURE } from '../../../../constants/B
 import {HW_MODEL} from '../actions'
 import Api from '../../../../constants/Api'
 import { message } from 'antd'
-import {browserHistory} from 'react-router'
+import {hashHistory} from 'react-router'
 import { addSaga } from '../../../../store/rootSaga'
 import NavigatorAction from '../../../../constants/NavigatorAction'
 function* watchGetHwModelList () {
@@ -23,7 +23,7 @@ function* watchGetHwModelById () {
       const { id } = yield take(HW_MODEL.GET_BY_ID.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(HW_MODEL.URL)+"/"+id)
       yield put(action(HW_MODEL.GET_BY_ID.SUCCESS, {obj: res.data}))
-       browserHistory.push("/prj_user/hwmodel/update/"+id)
+       hashHistory.push("/prj_user/hwmodel/update/"+id)
     } catch (e) {
       yield put(action(HW_MODEL.GET_BY_ID.FAILURE, {error: e}))
     }
@@ -34,7 +34,7 @@ function* watchAddHwModel () {
     try {
       const { obj } = yield take(HW_MODEL.ADD.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(HW_MODEL.URL), { method: 'POST', body: obj } )
-      if(res.code == 200){ 
+      if(res.code == 200){
    	  yield put(action(HW_MODEL.ADD.SUCCESS, {data: res.data}))
       message.success('添加成功')
       yield put(NavigatorAction('/prj_user/hwmodel/list'))
@@ -54,8 +54,8 @@ function* watchHwModelUpdate () {
     try {
       const { obj } = yield take(HW_MODEL.UPDATE.REQUEST)
       let res = yield call(Api.request, Api.calcUrl(HW_MODEL.URL), { method: 'PUT', body: obj } )
-      if(res.code == 200){ 
-      	  yield put(action(HW_MODEL.UPDATE.SUCCESS, {data: res})) 
+      if(res.code == 200){
+      	  yield put(action(HW_MODEL.UPDATE.SUCCESS, {data: res}))
           yield put(NavigatorAction('/prj_user/hwmodel/list'))
           message.success('修改成功')
       }
@@ -76,7 +76,7 @@ function* watchDelHwModel() {
 		let param = yield take(HW_MODEL.DEL_BY_ID.REQUEST)
 		let listParam = param[0]
     	let res = yield call(Api.request, Api.calcUrl(HW_MODEL.URL) + "/" + param['id'], { method: 'DELETE' } )
-    	if(res.code == 200){ 
+    	if(res.code == 200){
     		yield put(action(HW_MODEL.DEL_BY_ID.SUCCESS))
     		message.success('删除成功')
     		yield put(action(HW_MODEL.QUERY_LIST.REQUEST,{data:listParam}))
@@ -84,7 +84,7 @@ function* watchDelHwModel() {
     	else
     	{
       	  message.success('删除失败')
-      	  yield put(action(HW_MODEL.DEL_BY_ID.FAILURE, { error: e }))	
+      	  yield put(action(HW_MODEL.DEL_BY_ID.FAILURE, { error: e }))
     	}
     } catch (e) {
       yield put(action(HW_MODEL.DEL_BY_ID.FAILURE, { error: e }))
@@ -94,7 +94,7 @@ function* watchDelHwModel() {
 function* searchHwModelInfo() {
   while (true) {
     try {
-      const { data } = yield take(HW_MODEL.SEARCH_LIKE.REQUEST)	
+      const { data } = yield take(HW_MODEL.SEARCH_LIKE.REQUEST)
       let res = yield call(Api.request,Api.calcUrl(HW_MODEL.URL)+"/search?searchKey="+data.searchKey+"&searchMes="+data.searchMes, { method: 'GET' } )
       yield put(action(HW_MODEL.SEARCH_LIKE.SUCCESS, {data: res.data}))
     } catch (e) {

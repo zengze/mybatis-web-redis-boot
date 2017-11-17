@@ -3,7 +3,7 @@ import { action,NAVIGATE,REQUEST,SUCCESS,FAILURE } from '../../../../constants/B
 import {WR_ADMA_B} from '../actions'
 import Api from '../../../../constants/Api'
 import { message } from 'antd'
-import {browserHistory} from 'react-router'
+import {hashHistory} from 'react-router'
 import { addSaga } from '../../../../store/rootSaga'
 import NavigatorAction from '../../../../constants/NavigatorAction'
 function* watchGetWrAdmaBList () {
@@ -23,7 +23,7 @@ function* watchGetWrAdmaBById () {
       const { id } = yield take(WR_ADMA_B.GET_BY_ID.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(WR_ADMA_B.URL)+"/"+id)
       yield put(action(WR_ADMA_B.GET_BY_ID.SUCCESS, {obj: res.data}))
-       browserHistory.push("/prj_projectname/wradmab/update/"+id)
+       hashHistory.push("/prj_projectname/wradmab/update/"+id)
     } catch (e) {
       yield put(action(WR_ADMA_B.GET_BY_ID.FAILURE, {error: e}))
     }
@@ -34,7 +34,7 @@ function* watchAddWrAdmaB () {
     try {
       const { obj } = yield take(WR_ADMA_B.ADD.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(WR_ADMA_B.URL), { method: 'POST', body: obj } )
-      if(res.code == 200){ 
+      if(res.code == 200){
    	  yield put(action(WR_ADMA_B.ADD.SUCCESS, {data: res.data}))
       message.success('添加成功')
       yield put(NavigatorAction('/prj_projectname/wradmab/list'))
@@ -54,8 +54,8 @@ function* watchWrAdmaBUpdate () {
     try {
       const { obj } = yield take(WR_ADMA_B.UPDATE.REQUEST)
       let res = yield call(Api.request, Api.calcUrl(WR_ADMA_B.URL), { method: 'PUT', body: obj } )
-      if(res.code == 200){ 
-      	  yield put(action(WR_ADMA_B.UPDATE.SUCCESS, {data: res})) 
+      if(res.code == 200){
+      	  yield put(action(WR_ADMA_B.UPDATE.SUCCESS, {data: res}))
           yield put(NavigatorAction('/prj_projectname/wradmab/list'))
           message.success('修改成功')
       }
@@ -76,7 +76,7 @@ function* watchDelWrAdmaB() {
 		let param = yield take(WR_ADMA_B.DEL_BY_ID.REQUEST)
 		let listParam = param[0]
     	let res = yield call(Api.request, Api.calcUrl(WR_ADMA_B.URL) + "/" + param['id'], { method: 'DELETE' } )
-    	if(res.code == 200){ 
+    	if(res.code == 200){
     		yield put(action(WR_ADMA_B.DEL_BY_ID.SUCCESS))
     		message.success('删除成功')
     		yield put(action(WR_ADMA_B.QUERY_LIST.REQUEST,{data:listParam}))
@@ -84,7 +84,7 @@ function* watchDelWrAdmaB() {
     	else
     	{
       	  message.success('删除失败')
-      	  yield put(action(WR_ADMA_B.DEL_BY_ID.FAILURE, { error: e }))	
+      	  yield put(action(WR_ADMA_B.DEL_BY_ID.FAILURE, { error: e }))
     	}
     } catch (e) {
       yield put(action(WR_ADMA_B.DEL_BY_ID.FAILURE, { error: e }))
@@ -94,7 +94,7 @@ function* watchDelWrAdmaB() {
 function* searchWrAdmaBInfo() {
   while (true) {
     try {
-      const { data } = yield take(WR_ADMA_B.SEARCH_LIKE.REQUEST)	
+      const { data } = yield take(WR_ADMA_B.SEARCH_LIKE.REQUEST)
       let res = yield call(Api.request,Api.calcUrl(WR_ADMA_B.URL)+"/search?searchKey="+data.searchKey+"&searchMes="+data.searchMes, { method: 'GET' } )
       yield put(action(WR_ADMA_B.SEARCH_LIKE.SUCCESS, {data: res.data}))
     } catch (e) {

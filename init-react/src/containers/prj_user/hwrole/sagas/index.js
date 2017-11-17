@@ -3,7 +3,7 @@ import { action,NAVIGATE,REQUEST,SUCCESS,FAILURE } from '../../../../constants/B
 import {HW_ROLE} from '../actions'
 import Api from '../../../../constants/Api'
 import { message } from 'antd'
-import {browserHistory} from 'react-router'
+import {hashHistory} from 'react-router'
 import { addSaga } from '../../../../store/rootSaga'
 import NavigatorAction from '../../../../constants/NavigatorAction'
 function* watchGetHwRoleList () {
@@ -23,7 +23,7 @@ function* watchGetHwRoleById () {
       const { id } = yield take(HW_ROLE.GET_BY_ID.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(HW_ROLE.URL)+"/"+id)
       yield put(action(HW_ROLE.GET_BY_ID.SUCCESS, {obj: res.data}))
-       browserHistory.push("/prj_user/hwrole/update/"+id)
+       hashHistory.push("/prj_user/hwrole/update/"+id)
     } catch (e) {
       yield put(action(HW_ROLE.GET_BY_ID.FAILURE, {error: e}))
     }
@@ -34,7 +34,7 @@ function* watchAddHwRole () {
     try {
       const { obj } = yield take(HW_ROLE.ADD.REQUEST)
    	  let res = yield call(Api.request, Api.calcUrl(HW_ROLE.URL), { method: 'POST', body: obj } )
-      if(res.code == 200){ 
+      if(res.code == 200){
    	  yield put(action(HW_ROLE.ADD.SUCCESS, {data: res.data}))
       message.success('添加成功')
       yield put(NavigatorAction('/prj_user/hwrole/list'))
@@ -54,8 +54,8 @@ function* watchHwRoleUpdate () {
     try {
       const { obj } = yield take(HW_ROLE.UPDATE.REQUEST)
       let res = yield call(Api.request, Api.calcUrl(HW_ROLE.URL), { method: 'PUT', body: obj } )
-      if(res.code == 200){ 
-      	  yield put(action(HW_ROLE.UPDATE.SUCCESS, {data: res})) 
+      if(res.code == 200){
+      	  yield put(action(HW_ROLE.UPDATE.SUCCESS, {data: res}))
           yield put(NavigatorAction('/prj_user/hwrole/list'))
           message.success('修改成功')
       }
@@ -76,7 +76,7 @@ function* watchDelHwRole() {
 		let param = yield take(HW_ROLE.DEL_BY_ID.REQUEST)
 		let listParam = param[0]
     	let res = yield call(Api.request, Api.calcUrl(HW_ROLE.URL) + "/" + param['id'], { method: 'DELETE' } )
-    	if(res.code == 200){ 
+    	if(res.code == 200){
     		yield put(action(HW_ROLE.DEL_BY_ID.SUCCESS))
     		message.success('删除成功')
     		yield put(action(HW_ROLE.QUERY_LIST.REQUEST,{data:listParam}))
@@ -84,7 +84,7 @@ function* watchDelHwRole() {
     	else
     	{
       	  message.success('删除失败')
-      	  yield put(action(HW_ROLE.DEL_BY_ID.FAILURE, { error: e }))	
+      	  yield put(action(HW_ROLE.DEL_BY_ID.FAILURE, { error: e }))
     	}
     } catch (e) {
       yield put(action(HW_ROLE.DEL_BY_ID.FAILURE, { error: e }))
@@ -94,7 +94,7 @@ function* watchDelHwRole() {
 function* searchHwRoleInfo() {
   while (true) {
     try {
-      const { data } = yield take(HW_ROLE.SEARCH_LIKE.REQUEST)	
+      const { data } = yield take(HW_ROLE.SEARCH_LIKE.REQUEST)
       let res = yield call(Api.request,Api.calcUrl(HW_ROLE.URL)+"/search?searchKey="+data.searchKey+"&searchMes="+data.searchMes, { method: 'GET' } )
       yield put(action(HW_ROLE.SEARCH_LIKE.SUCCESS, {data: res.data}))
     } catch (e) {
