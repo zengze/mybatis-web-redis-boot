@@ -2,7 +2,8 @@ import TokenUtil from '../common/TokenUtil';
 import { message } from 'antd'
 export default class Api {
     //static URL= 'http://192.168.100.37:9090/happy_module_userinfo/';
-    static MENU_URL = 'http://localhost:8080/MENU.json';
+    // static MENU_URL = 'http://localhost:8080/MENU.json';
+    static MENU_URL = '/MENU.json';
     static URL = 'http://localhost:8090/';
     static dealy = (flag = false, ms = 3000) => {
         return new Promise((resolve, reject) => {
